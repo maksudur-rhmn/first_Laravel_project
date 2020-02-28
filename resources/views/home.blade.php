@@ -1,4 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
+
+
+@section('breadcrumb')
+  <nav class="breadcrumb sl-breadcrumb">
+    <a class="breadcrumb-item" href="{{ url('home') }}">Dashboard</a>
+  </nav>
+@endsection
 
 @section('content')
 <div class="container">

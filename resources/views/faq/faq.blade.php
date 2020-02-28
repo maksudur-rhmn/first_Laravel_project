@@ -1,4 +1,14 @@
-@extends('layouts/app')
+@extends('layouts/dashboard')
+
+
+  @section('breadcrumb')
+    <nav class="breadcrumb sl-breadcrumb">
+      <a class="breadcrumb-item" href="{{ url('home') }}">Dashboard</a>
+      <span class="breadcrumb-item active">{{ route('add_faq') }}</span>
+    </nav>
+  @endsection
+
+
 
 @section('content')
 

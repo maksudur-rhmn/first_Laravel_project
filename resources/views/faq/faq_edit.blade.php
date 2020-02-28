@@ -1,4 +1,11 @@
-@extends('layouts/app')
+@extends('layouts/dashboard')
+
+@section('breadcrumb')
+  <nav class="breadcrumb sl-breadcrumb">
+    <a class="breadcrumb-item" href="{{ url('/faq') }}">Add Faq</a>
+    <span class="breadcrumb-item active">{{ $faqs->faq_question }}</span>
+  </nav>
+@endsection
 
 @section('content')
 
@@ -7,12 +14,6 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8 offset-lg-2">
-              <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/faq') }}">Add Faq</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $faqs->faq_question }}</li>
-              </ol>
-            </nav>
               <div class="card">
                 <div class="card-header text-center">
                   Add FAQ

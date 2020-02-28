@@ -26,6 +26,15 @@ Route::get('/contact', 'FrontendController@contact')->middleware('verified');
   Route::get('/faq/hDelete/{faq_id}', 'FaqController@faq_hardDelete')->name('faq_hardDelete')->middleware('verified');
 // FaqController
 
+
+// ProfileController
+
+Route::get('/edit/profie', 'ProfileController@edit_profile')->name('edit_profile')->middleware('verified');
+Route::post('/change/password', 'ProfileController@changePassword')->name('changePassword')->middleware('verified');
+// END ProfileController
+
+
+
 Auth::routes(['verify' => true]);
 
 // HomeController

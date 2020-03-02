@@ -1,5 +1,14 @@
 @extends('layouts.dashboard')
 
+@section('title')
+  Home
+@endsection
+
+@section('home')
+  active
+@endsection
+
+
 
 @section('breadcrumb')
   <nav class="breadcrumb sl-breadcrumb">

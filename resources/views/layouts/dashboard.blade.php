@@ -29,7 +29,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Starlight Responsive Bootstrap 4 Admin Template</title>
+    <title>@yield('title')</title>
 
     <!-- vendor css -->
 
@@ -56,16 +56,22 @@
 
       <label class="sidebar-label">Navigation</label>
       <div class="sl-sideleft-menu">
-        <a href="{{ route('home') }}" class="sl-menu-link">
+        <a href="{{ route('home') }}" class="sl-menu-link @yield('home')">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
-            <span class="menu-item-label">Dashboard</span>
+            <span class="menu-item-label">Home</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-        <a href="{{ url('/faq') }}" class="sl-menu-link">
+        <a href="{{ url('/faq') }}" class="sl-menu-link @yield('faq')">
           <div class="sl-menu-item">
             <i class="fa fa-question tx-20"></i>
             <span class="menu-item-label">Add Faq</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <a href="{{ route('category.index') }}" class="sl-menu-link @yield('categories')">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
+            <span class="menu-item-label">Categories</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
 

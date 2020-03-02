@@ -12,7 +12,8 @@ class FaqController extends Controller
 {
      function addfaq()
      {
-       $faqs = Faq::all();
+       // $faqs = Faq::orderBy('id', 'desc')->get();
+       $faqs = Faq::latest()->paginate(10);
        $deleted_faqs = Faq::onlyTrashed()->get();
        // echo $deleted_faqs;
 

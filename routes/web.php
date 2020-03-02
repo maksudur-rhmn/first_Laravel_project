@@ -40,3 +40,8 @@ Auth::routes(['verify' => true]);
 // HomeController
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 // HomeController END
+
+
+// CategoryController
+Route::resource('category', 'CategoryController');
+// END CategoryController

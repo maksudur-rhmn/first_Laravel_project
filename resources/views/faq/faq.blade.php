@@ -1,14 +1,19 @@
 @extends('layouts/dashboard')
 
+ @section('title')
+    Add Faq
+ @endsection
+
+ @section('faq')
+   active
+ @endsection
 
   @section('breadcrumb')
     <nav class="breadcrumb sl-breadcrumb">
       <a class="breadcrumb-item" href="{{ url('home') }}">Dashboard</a>
-      <span class="breadcrumb-item active">{{ route('add_faq') }}</span>
+      <span class="breadcrumb-item active">Frequently Asked Questions</span>
     </nav>
   @endsection
-
-
 
 @section('content')
 
@@ -39,9 +44,9 @@
                       <th>Answer</th>
                       <th>Action</th>
                     </tr>
-                    @forelse($faqs as $faq)
+                    @forelse($faqs as $index => $faq)
                     <tr>
-                      <th>{{ $loop-> index +1 }}</th>
+                      <th>{{ $faqs -> firstItem() + $index }}</th>
                       <th>{{ $faq->faq_question }}</th>
                       <th>{{ $faq->faq_answer }}</th>
                       <th>
@@ -58,6 +63,8 @@
 
                     @endforelse
                  </table>
+
+                {{ $faqs->links() }}
 
 
                </div>

@@ -1,5 +1,9 @@
 @extends('layouts.dashboard')
 
+
+@section('title')
+  Edit Profile
+@endsection
 @section('breadcrumb')
   <nav class="breadcrumb sl-breadcrumb">
     <a class="breadcrumb-item" href="{{ url('home') }}">Dashboard</a>
@@ -15,6 +19,12 @@
           <div class="card-header text-center">
             Edit Profile
           </div>
+
+            @if(session('passwordchanged'))
+              <div class="alert alert-success">
+                {{ session('passwordchanged') }}
+              </div>
+            @endif
           <div class="card-body">
             <form class="form-group" action="{{ route('changePassword') }}" method="post">
               @csrf

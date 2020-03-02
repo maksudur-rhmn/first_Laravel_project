@@ -1,5 +1,9 @@
 @extends('layouts/dashboard')
 
+  @section('title')
+    Edit FAQ
+  @endsection
+
 @section('breadcrumb')
   <nav class="breadcrumb sl-breadcrumb">
     <a class="breadcrumb-item" href="{{ url('/faq') }}">Add Faq</a>

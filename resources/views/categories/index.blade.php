@@ -67,7 +67,7 @@
            </div>
          </div>
 
-         <div class="col-lg-6 offset-lg-1">
+         <div class="col-lg-8">
            <div class="card">
              <div class="card-header">
                <h3 class="text-center">All Categories</h3>
@@ -79,6 +79,7 @@
                    <th>SL.</th>
                    <th>Category</th>
                    <th>Added By</th>
+                   <th>Image</th>
                    <th>Created at</th>
                    <th>Updated at</th>
                    <th>Action</th>
@@ -90,6 +91,9 @@
                       {{-- <td>{{ App\User::findOrFail($category->added_by)->name }}</td> --}}
                       {{-- <td>{{ $category->relationBetweenUser->name }}</td> --}}
                       <td>{{ $category->connection_between_User->name }}</td>
+                      <td>
+                        <img src="{{ asset('uploads/categories') }}/{{ $category->category_image }}" alt="{{ $category->category_image }}" width="50">
+                      </td>
                       <td>{{ $category->created_at->diffForHumans() }}</td>
                       <td>
                         @if (isset($category->updated_at))
@@ -99,7 +103,7 @@
                         @endif
                       </td>
                       <td>
-                        <a href="#" class="btn btn-info">Edit</a>
+                        <a href="{{ route('category.edit', $category->id) }}" class="btn btn-info">Edit</a>
                       </td>
                     </tr>
                   @empty

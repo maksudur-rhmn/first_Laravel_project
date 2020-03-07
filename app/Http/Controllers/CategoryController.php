@@ -54,15 +54,10 @@ class CategoryController extends Controller
         $uploaded_image = $request->file('category_image');
         $category_image_name = $return_after_create->id. "." .$uploaded_image->getClientOriginalExtension('category_image');
         $category_image_location = public_path('uploads/categories/' . $category_image_name);
-        Image::make($uploaded_image)->resize(300, 300)->save($category_image_location, 50);
+        Image::make($uploaded_image)->resize(600, 400)->insert(public_path('uploads/categories/watermark.png'),'bottom-right', 10, 10)->save($category_image_location, 50);
         $return_after_create->category_image = $category_image_name;
         $return_after_create->save();
         }
-        else {
-          echo "NAI";
-        }
-
-
        return back()->withSuccess('Category Added Successfully');
     }
 
@@ -85,7 +80,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+       return view('categories.edit', compact('category'));
     }
 
     /**
@@ -97,7 +92,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+      $category->category_name = $request->category_name;
+      $category->save();
+      return redirect('/category');
     }
 
     /**

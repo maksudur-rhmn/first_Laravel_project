@@ -16,9 +16,15 @@ class Category extends Model
       'added_by',
    ];
 
-    function relationBetweenUser()
-    {
-      return $this->hasOne('App\User', 'id', 'added_by');
-    }
+    // function relationBetweenUser()
+    // {
+    //   return $this->hasOne('App\User', 'id', 'added_by');
+    // }
+
+  function connection_between_User()
+  {
+    return $this->belongsTo('App\User', 'added_by');
+  }
+
    // END
  }

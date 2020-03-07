@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('category_name')->unique();
             $table->integer('added_by');
+            $table->string('category_image')->default('category_default_image.jpg');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -37,10 +37,16 @@
                <h3 class="text-center">Add Categories</h3>
              </div>
              <div class="card-body">
-               <form class="form-group" action="{{ route('category.store') }}" method="post">
+               <form class="form-group" action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
                  @csrf
                  <div class="py-3">
                    <input class="form-control" type="text" name="category_name" placeholder="Category Name">
+                   @error ('category_name')
+                     <small class="text-danger">{{ $message }}</small>
+                   @enderror
+                 </div>
+                 <div class="py-3">
+                   <input class="form-control" type="file" name="category_image">
                    @error ('category_name')
                      <small class="text-danger">{{ $message }}</small>
                    @enderror
@@ -82,7 +88,8 @@
                       <td>{{ $loop -> index + 1 }}</td>
                       <td>{{ $category->category_name }}</td>
                       {{-- <td>{{ App\User::findOrFail($category->added_by)->name }}</td> --}}
-                      <td>{{ $category->relationBetweenUser->name }}</td>
+                      {{-- <td>{{ $category->relationBetweenUser->name }}</td> --}}
+                      <td>{{ $category->connection_between_User->name }}</td>
                       <td>{{ $category->created_at->diffForHumans() }}</td>
                       <td>
                         @if (isset($category->updated_at))
@@ -92,7 +99,7 @@
                         @endif
                       </td>
                       <td>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <a href="#" class="btn btn-info">Edit</a>
                       </td>
                     </tr>
                   @empty

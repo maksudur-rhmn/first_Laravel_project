@@ -6,6 +6,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use Auth;
 use Carbon\Carbon;
+use Image;
 
 class CategoryController extends Controller
 {
@@ -40,12 +41,28 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
        $request->validate([
          'category_name' => 'required|unique:categories'
        ],[
          'category_name.unique' => 'Category name already exists'
        ]);
-       Category::create($request->except('_token') + ['added_by' => Auth::id(), 'created_at' => Carbon::now()]);
+        $return_after_create = Category::create($request->except('_token') + ['added_by' => Auth::id(), 'created_at' => Carbon::now()]);
+
+        if($request->hasFile('category_image'))
+        {
+        $uploaded_image = $request->file('category_image');
+        $category_image_name = $return_after_create->id. "." .$uploaded_image->getClientOriginalExtension('category_image');
+        $category_image_location = public_path('uploads/categories/' . $category_image_name);
+        Image::make($uploaded_image)->resize(300, 300)->save($category_image_location, 50);
+        $return_after_create->category_image = $category_image_name;
+        $return_after_create->save();
+        }
+        else {
+          echo "NAI";
+        }
+
+
        return back()->withSuccess('Category Added Successfully');
     }
 

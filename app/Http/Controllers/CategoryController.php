@@ -92,6 +92,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+
+
       $category->category_name = $request->category_name;
       $category->save();
       return redirect('/category');

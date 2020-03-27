@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class PasswordChangedConfirmation extends Mailable
+class PasswordMailer extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,10 +16,9 @@ class PasswordChangedConfirmation extends Mailable
      *
      * @return void
      */
-
     public function __construct()
     {
-      //
+        //
     }
 
     /**
@@ -29,6 +28,6 @@ class PasswordChangedConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->view('email.passwordchange');
+        return $this->view('view.name');
     }
 }
